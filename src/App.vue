@@ -61,7 +61,7 @@ const renderNodeValue = ({ node, defaultValue }: { node: NodeDataType; defaultVa
           'a',
           {
             class: 'hover:underline rounded-md px-1 py-0.5 -mx-1 -my-0.5',
-            href: `https://schema.jppgr.am/layer/${layer.value}/${node.content}`,
+            href: `https://core.telegram.org/constructor/${node.content}`,
             target: '_blank',
           },
           `${node.content}`,

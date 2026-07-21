@@ -24,15 +24,6 @@ const apiSchema = await fs.readFile(path.join(schemaPath, 'api.tl'), 'utf8').the
 
 const schema = await parseFullTlSchema(apiSchema)
 
-const unpackedSchema = {
-  unions: {},
-  classes: {},
-}
-for (const name in schema) {
-  if (!unpackedSchema.unions[name]) continue
-  unpackedSchema.unions[name].comment = schema.u[name]
-}
-
 const typesToAdd = new Set()
 
 const processedTypes = new Set()
