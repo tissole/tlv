@@ -79,15 +79,14 @@ const renderNodeValue = ({ node, defaultValue }: { node: NodeDataType; defaultVa
 </script>
 
 <template>
-  <div class="container mx-auto max-w-7xl px-3 py-2">
-    <section class="overflow-clip rounded-2xl">
-      <vue-json-pretty :renderNodeValue="renderNodeValue" :data="json" :showLength="true" />
-    </section>
+  <div class="container mx-auto max-w-7xl p-2">
+    <vue-json-pretty :renderNodeValue="renderNodeValue" :data="json" :showLength="true" />
     <ClipboardIcon
       @click="copyParsedJSON(json)"
-      class="fixed top-3 right-4 h-6 w-6 rounded-2xl p-1 backdrop-blur-sm transition hover:bg-black/10 active:scale-95"
+      class="fixed top-2 right-2 h-6 w-6 rounded-2xl p-1 backdrop-blur-sm transition hover:bg-black/10 active:scale-95"
     />
-    <div class="mt-2 text-sm text-gray-500 select-none sm:text-center dark:text-gray-400">
+    <hr class="my-2 border-gray-200 sm:mx-auto dark:border-gray-700" />
+    <div class="text-sm text-gray-500 select-none sm:text-center dark:text-gray-400">
       © {{ new Date().getFullYear() }} TLViewer by
       <a
         v-wave

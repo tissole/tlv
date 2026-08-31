@@ -3,7 +3,7 @@
 }
 
 .vjs-tree-node {
-  @apply relative flex px-2 transition-colors hover:bg-sky-100 dark:hover:bg-slate-700;
+  @apply relative flex rounded px-2 transition-colors hover:bg-sky-100 dark:hover:bg-slate-700;
 }
 
 .vjs-tree-node .vjs-indent {
