@@ -83,7 +83,7 @@ const renderNodeValue = ({ node, defaultValue }: { node: NodeDataType; defaultVa
     <vue-json-pretty :renderNodeValue="renderNodeValue" :data="json" :showLength="true" />
     <ClipboardIcon
       @click="copyParsedJSON(json)"
-      class="fixed top-2 right-2 h-6 w-6 rounded-2xl p-1 backdrop-blur-sm transition hover:bg-black/10 active:scale-95"
+      class="fixed right-2 bottom-2 h-8 w-8 rounded-2xl p-1 shadow backdrop-blur-sm transition hover:bg-black/10 active:scale-95"
     />
     <hr class="my-2 border-gray-200 sm:mx-auto dark:border-gray-700" />
     <div class="text-sm text-gray-500 select-none sm:text-center dark:text-gray-400">
