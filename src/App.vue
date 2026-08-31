@@ -81,10 +81,13 @@ const renderNodeValue = ({ node, defaultValue }: { node: NodeDataType; defaultVa
 <template>
   <div class="container mx-auto max-w-7xl p-2">
     <vue-json-pretty :renderNodeValue="renderNodeValue" :data="json" :showLength="true" />
-    <ClipboardIcon
+    <div
       @click="copyParsedJSON(json)"
-      class="fixed right-2 bottom-2 h-8 w-8 rounded-2xl p-1 shadow backdrop-blur-sm transition hover:bg-black/10 active:scale-95"
-    />
+      v-wave
+      class="fixed right-2 bottom-2 h-8 w-8 rounded-2xl p-1 shadow backdrop-blur-sm transition hover:bg-black/10 active:scale-95 dark:hover:bg-white/10"
+    >
+      <ClipboardIcon />
+    </div>
     <hr class="my-2 border-gray-200 sm:mx-auto dark:border-gray-700" />
     <div class="text-sm text-gray-500 select-none sm:text-center dark:text-gray-400">
       © {{ new Date().getFullYear() }} TLViewer by
