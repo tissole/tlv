@@ -33,12 +33,33 @@ watch(
   { immediate: true },
 )
 
+interface DeserializedContainer extends deserializedObject {
+  chats?: Array<Record<string, unknown>>
+  users?: Array<Record<string, unknown>>
+}
+
+function enrichPeerWithEntity(message: Record<string, any>, container: DeserializedContainer) {
+  const peerId = message.peerId
+  if (!peerId || typeof peerId !== 'object') return
+
+  const id = peerId.channelId ?? peerId.userId ?? peerId.chatId
+  if (id === undefined) return
+
+  const entity =
+    container.chats?.find((chat) => String((chat as any).id) === String(id)) ||
+    container.users?.find((user) => String((user as any).id) === String(id))
+  if (entity) {
+    peerId._peer = entity
+  }
+}
+
 async function parseObject(object: string) {
   try {
-    const obj = (await deserializeObject(object)) as deserializedObject
-    const parsedJson = toJSON(
-      obj._ == 'messages.messages' || obj._ == 'messages.channelMessages' ? obj.messages[0] : obj,
-    )
+    const obj = (await deserializeObject(object)) as DeserializedContainer
+    const message =
+      obj._ == 'messages.messages' || obj._ == 'messages.channelMessages' ? obj.messages[0] : obj
+    enrichPeerWithEntity(message as Record<string, any>, obj)
+    const parsedJson = toJSON(message)
     json.value = parsedJson
   } catch (e: unknown) {
     console.error(e)
